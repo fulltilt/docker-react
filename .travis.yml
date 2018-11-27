@@ -1,6 +1,10 @@
 sudo: required
+language: generic
 services:
   - docker
 
 before_install:
   - docker build -t fulltilt/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run fulltilt/docker-react npm run test -- --coverage
